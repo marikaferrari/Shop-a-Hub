@@ -1,8 +1,39 @@
+import type { Metadata } from "next";
+import prisma from "@/lib/db/prisma";
+import { redirect } from "next/navigation";
+
+export const metadata: Metadata = {
+  title: 'Add Product - Shop-a-Hub'
+}
+
+// Server action async function. More info: https://nextjs.org/docs/app/building-your-application/data-fetching/server-actions-and-mutations
+// There is no need to set up a separate endpoint if we use Server action
+async function addProduct(formData: FormData) {
+    // The following line tells Next.js that this is a Server action
+    "use server";
+
+    const name = formData.get("name")?.toString();
+    const description = formData.get("description")?.toString();
+    const imageUrl = formData.get("imageUrl")?.toString();
+    const price = Number(formData.get("price") || 0);
+
+    // Error handling
+    if(!name || !description || !imageUrl || !price) {
+        throw Error("Missing required fields");
+    }
+
+    await prisma.product.create({
+        data: { name, description, imageUrl, price },
+    });
+
+    redirect("/");
+}
+
 export default function AddProductPage() {
     return (
         <div>
             <h1 className="text-lg mb-3 font-bold">Add Product</h1>
-            <form>
+            <form action={addProduct}>
                 <input 
                 required
                 // contain the product name
