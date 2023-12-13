@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import prisma from "@/lib/db/prisma";
 import { redirect } from "next/navigation";
+import FormSubmitButton from "@/components/FormSubmitButton";
 
 export const metadata: Metadata = {
   title: 'Add Product - Shop-a-Hub'
@@ -17,7 +18,7 @@ async function addProduct(formData: FormData) {
     const imageUrl = formData.get("imageUrl")?.toString();
     const price = Number(formData.get("price") || 0);
 
-    // Error handling
+    // Error handling - Validation method
     if(!name || !description || !imageUrl || !price) {
         throw Error("Missing required fields");
     }
@@ -63,7 +64,7 @@ export default function AddProductPage() {
                 type="number"
                 className="mb-3 w-full input input-bordered"
                 />
-                <button type="submit" className="btn btn-primary btn-block">Add Product</button>
+                <FormSubmitButton type="submit" className="btn-block">Add Product</FormSubmitButton>
             </form>
         </div>
     )
