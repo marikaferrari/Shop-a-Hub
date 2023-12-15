@@ -19,7 +19,7 @@ export default function ProductCard({ product }: ProductCardProps) {
             className="card w-full bg-base-100 hover:shadow-xl transition-shadow">
                 <figure>
                     <Image
-                    src='/Shoes.avif' //{product.imageUrl}
+                    src={product.imageUrl}
                     alt={product.name}
                     width={800}
                     height={400}

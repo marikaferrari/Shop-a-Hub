@@ -5,15 +5,16 @@ const nextConfig = {
       protocol: 'https',
       hostname: "images.unsplash.com",
     },
+    {
+      protocol: 'https',
+      hostname: 'media.istockphoto.com'
+    },
     ],
   },
   experimental: {
-    serverActions: true,
+    // serverActions: true,
+    forceSwcTransforms: true,
   }
 }
 
-module.exports = module.exports = {
-  experimental: {
-    forceSwcTransforms: true,
-  },
-}
+module.exports = nextConfig;
