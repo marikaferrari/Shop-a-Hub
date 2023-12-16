@@ -8,12 +8,9 @@ const nextConfig = {
     ],
   },
   experimental: {
-    serverActions: true,
+    // serverActions: true, //It's not needed anymore for the newer Next.js version
+    forceSwcTransforms: true,
   }
 }
 
-module.exports = module.exports = {
-  experimental: {
-    forceSwcTransforms: true,
-  },
-}
+module.exports = nextConfig;
