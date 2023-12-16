@@ -5,14 +5,10 @@ const nextConfig = {
       protocol: 'https',
       hostname: "images.unsplash.com",
     },
-    {
-      protocol: 'https',
-      hostname: 'media.istockphoto.com'
-    },
     ],
   },
   experimental: {
-    // serverActions: true,
+    // serverActions: true, //It's not needed anymore for the newer Next.js version
     forceSwcTransforms: true,
   }
 }
