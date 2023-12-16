@@ -7,16 +7,36 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+// minute 43
 model Product {
-  id          String   @id @default(auto()) @map("_id") @db.ObjectId
+  id          String     @id @default(auto()) @map("_id") @db.ObjectId
   description String
   imageUrl    String
   name        String
   price       Int
-  createdAt   DateTime @default(now()) // Specifies that the default value for this field is the current date and time when a new record is created.
-  updatedAt   DateTime @updatedAt // Updates to the current timestamp whenever the record is modified or updated.
+  createdAt   DateTime   @default(now()) // Specifies that the default value for this field is the current date and time when a new record is created.
+  updatedAt   DateTime   @updatedAt // Updates to the current timestamp whenever the record is modified or updated.
+  CartItem    CartItem[]
 
   @@map("products") // Let the model know which connection we are referring to
 }
 
-// minuto 43 
+model Cart {
+  id        String     @id @default(auto()) @map("_id") @db.ObjectId
+  items     CartItem[]
+  createdAt DateTime   @default(now())
+  updatedAt DateTime   @updatedAt
+
+  @@map("carts")
+}
+
+model CartItem {
+  id        String  @id @default(auto()) @map("_id") @db.ObjectId
+  productId String  @db.ObjectId
+  product   Product @relation(fields: [productId], references: [id], onDelete: Cascade)
+  quantity  Int
+  cartId    String  @db.ObjectId
+  cart      Cart    @relation(fields: [cartId], references: [id])
+
+  @@map("cartitems")
+}
