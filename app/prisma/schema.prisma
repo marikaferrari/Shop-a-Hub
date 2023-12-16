@@ -1,7 +1,9 @@
+// Define Prisma client generator for JS
 generator client {
   provider = "prisma-client-js"
 }
 
+// Set up MongoDB as the data source using the provided URL from the environment variables
 datasource db {
   provider = "mongodb"
   url      = env("DATABASE_URL")
