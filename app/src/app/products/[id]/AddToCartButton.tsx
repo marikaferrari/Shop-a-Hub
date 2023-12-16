@@ -2,12 +2,14 @@
 
 import { useTransition, useState } from "react"
 
+// Define the props for the AddToCartButton component
 interface AddToCartButtonProps {
     productId: string,
     incrementProductQuantity: (productId: string) => Promise<void>
 }
 
 export default function AddToCartButton({productId, incrementProductQuantity}: AddToCartButtonProps) {
+     // State to manage the loading transition
     const [isPending, startTransition] = useTransition();
     const [success, setSuccess] = useState(false);
 
@@ -15,10 +17,16 @@ export default function AddToCartButton({productId, incrementProductQuantity}: A
         <div className="flex items-center gap-2">
             <button className="btn btn-primary"
             onClick={() => {
-                setSuccess(false);
-                startTransition(async () => {
-                    await incrementProductQuantity(productId);
-                    setSuccess(true);
+                // Reset the success status
+                    setSuccess(false);
+                    
+                    // Initiate a transition, handling asynchronous operations
+                    startTransition(async () => {
+                        // Invoke the function to increment product quantity
+                        await incrementProductQuantity(productId);
+                        
+                        // Set the success status upon completion
+                        setSuccess(true);
                 })
             }}>
                 ADD TO CART
@@ -39,12 +47,15 @@ export default function AddToCartButton({productId, incrementProductQuantity}: A
           />
         </svg>
             </button>
-            {isPending && <span className="loading loading-spinner loading-md"/>}
+           {/* Display loading spinner when an operation is pending */}
+            {isPending && <span className="loading loading-spinner loading-md" />}
+            
+            {/* Display success message when operation is complete */}
             {!isPending && success && <span className="text-success">Added to Cart.</span>}
         </div>
     )
 }
 
 // Note: useTransition is a relatively new React hook that allows to pass server actions from a client component
-    // "startTransition from useTransition bounds the errors that happen in the transition to the component where you call useTransition, this ensures that server actions, when called manually, do not crash the entire page. Instead the error would be caught by error boundaries abobe the component." - From Next.js team member
+    // "startTransition from useTransition bounds the errors that happen in the transition to the component where you call useTransition, this ensures that server actions, when called manually, do not crash the entire page. Instead the error would be caught by error boundaries above the component." - From Next.js team member
 // Important to do : Set up an error page 
