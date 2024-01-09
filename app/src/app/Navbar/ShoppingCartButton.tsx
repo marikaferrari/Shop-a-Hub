@@ -1,4 +1,5 @@
 import { ShoppingCart } from "@/lib/db/card";
+import { formatPrice } from "@/lib/format";
 
 interface ShoppinCartButtonProps {
     cart: ShoppingCart | null;
@@ -29,6 +30,16 @@ export default function ShoppinCartButton({ cart }: ShoppinCartButtonProps) {
                     </span>
                 </div>
             </label>
+            <div
+                tabIndex={0} 
+                className="card dropdown-content card-compact mt-3 w-52 bg-base-100 shadow z-30">
+                    <div className="card-body">
+                        <span className="text-lg font-bold ">{cart?.size || 0} Items</span>
+                        <span className="text-info">
+                            Subtotal: {formatPrice(cart?.subtotal || 0)}
+                        </span>
+                    </div>
+            </div>
         </div>
     )
 }
