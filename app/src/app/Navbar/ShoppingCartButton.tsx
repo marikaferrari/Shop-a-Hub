@@ -1,11 +1,22 @@
+"use client"
+
 import { ShoppingCart } from "@/lib/db/card";
 import { formatPrice } from "@/lib/format";
+import Link from "next/link";
 
 interface ShoppinCartButtonProps {
     cart: ShoppingCart | null;
 }
 
 export default function ShoppinCartButton({ cart }: ShoppinCartButtonProps) {
+
+    function closeDropdown() {
+        const elem = document.activeElement as HTMLElement;
+        if (elem) {
+            elem.blur();
+        }
+    }
+
     return (
         <div className="dropdown dropdown-end">
             <label tabIndex={0} className="btn-ghost btn-circle btn">
@@ -38,6 +49,15 @@ export default function ShoppinCartButton({ cart }: ShoppinCartButtonProps) {
                         <span className="text-info">
                             Subtotal: {formatPrice(cart?.subtotal || 0)}
                         </span>
+                        <div className="card-actions">
+                            <Link 
+                            href="/cart"
+                            className="btn btn-primary btn-block"
+                            onClick={closeDropdown}
+                            >
+                            View cart
+                            </Link>
+                        </div>
                     </div>
             </div>
         </div>
