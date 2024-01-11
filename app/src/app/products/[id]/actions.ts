@@ -1,7 +1,7 @@
 // Server actions for 'add to cart' button
 'use server'
 
-import { createCart, getCart } from "@/lib/db/card"
+import { createCart, getCart } from "@/lib/db/cart"
 import prisma from "@/lib/db/prisma";
 import { revalidatePath } from "next/cache";
 
