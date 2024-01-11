@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import logo from "@/assets/logo.png";
 import { redirect } from "next/navigation";
-import { getCart } from "@/lib/db/card";
+import { getCart } from "@/lib/db/cart";
 import ShoppinCartButton from "./ShoppingCartButton";
 
 // Server action
