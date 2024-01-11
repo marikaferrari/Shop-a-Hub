@@ -10,5 +10,6 @@ To set up the project, follow these steps:
 2. Run the following command to install the required packages:
 
 ```bash
+
 npm i
 ```
