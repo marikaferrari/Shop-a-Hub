@@ -41,13 +41,14 @@ export default function CartEntry({ cartItem: { product, quantity }, setProductQ
                                 await setProductQuantity(product.id, newQuantity)
                             })
                         }}>
+                            <option value={0}>0 (Remove)</option>
                             {quantityOptions}
                         </select>
                     </div>
                     <div className="flex items-center gap-3">
                         Total: {formatPrice(product.price * quantity)}
+                        {isPending && <span className="loading loading-spinner loading-sm" />}
                     </div>
-                    {isPending && <span className="loading loading-spinner loading-sm" />}
                 </div>
             </div>
             <div className="divider" />
