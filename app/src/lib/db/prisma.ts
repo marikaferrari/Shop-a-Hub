@@ -1,5 +1,4 @@
 // Now that the database is set up and Prisma initialized, we can utilize it globally adding the following code
-// The following code is slightly different from the original
 import { PrismaClient } from "@prisma/client";
 
 const globalForPrisma = globalThis as unknown as {
