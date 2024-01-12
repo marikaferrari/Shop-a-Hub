@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import prisma from '@/lib/db/prisma';
+import { prisma } from '@/lib/db/prisma';
 import ProductCard from '@/components/ProductCard';
 import Link from 'next/link';
 import PaginationBar from '@/components/PaginationBar';
