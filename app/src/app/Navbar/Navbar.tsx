@@ -6,7 +6,7 @@ import { getCart } from "@/lib/db/cart";
 import ShoppinCartButton from "./ShoppingCartButton";
 import UserMenuButton from "./UserMenuButton";
 import { getServerSession } from "next-auth";
-import { authOptions } from "../api/auth/[...nextauth]/route";
+import { authOptions } from "../api/auth/[. . .nextauth]/route";
 
 // Server action
 // By using server action, there is no need to reload the page = better user experience
