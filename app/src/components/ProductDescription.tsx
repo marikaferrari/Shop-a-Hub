@@ -3,11 +3,10 @@
 import React from 'react';
 
 interface ProductDescriptionProps {
-  name: string,
   description: string;
 }
 
-export default function ProductDescription({ name, description }: ProductDescriptionProps) {
+export default function ProductDescription({ description }: ProductDescriptionProps) {
   let showFullDescription = false;
 
   const toggleDescription = () => {
@@ -25,8 +24,8 @@ export default function ProductDescription({ name, description }: ProductDescrip
       ) : (
         <>
           <p style={{ maxHeight: '4.5em', overflow: 'hidden' }}>{description}</p>
-          <span className="black font-bold" onClick={toggleDescription}>
-           Learn more about<span> "{name}"</span>
+          <span className="text-gray-500" onClick={toggleDescription}>
+           Learn more...
           </span>
         </>
       )}
