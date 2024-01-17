@@ -9,7 +9,7 @@ const nextConfig = {
     ],
   },
   experimental: {
-    // serverActions: true, //It's not needed anymore for the newer Next.js version
+    serverActions: true, 
     forceSwcTransforms: true,
   }
 }
