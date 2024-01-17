@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import { prisma } from "@/lib/db/prisma";
 import { redirect } from "next/navigation";
 import FormSubmitButton from "@/components/FormSubmitButton";
-import { getServerSession } from "next-auth";
-import { authOptions } from "../api/auth/[...nextauth]/route";
+// import { getServerSession } from "next-auth";
+// import { authOptions } from "../api/auth/[...nextauth]/route";
 
 export const metadata: Metadata = {
   title: 'Add Product - Shop-a-Hub'
@@ -16,11 +16,11 @@ async function addProduct(formData: FormData) {
     "use server";
 
     // Level of security added integrated with authentication
-    const session = await getServerSession(authOptions);
+    // const session = await getServerSession(authOptions);
 
-    if (!session) {
-        redirect("/api/auth/signin?callbackUrl=/add-product");
-    }
+    // if (!session) {
+    //     redirect("/api/auth/signin?callbackUrl=/add-product");
+    // }
 
     const name = formData.get("name")?.toString();
     const description = formData.get("description")?.toString();
@@ -42,11 +42,11 @@ async function addProduct(formData: FormData) {
 export default async function AddProductPage() {
 
     // Level of security added integrated with authentication
-    const session = await getServerSession(authOptions);
+    // const session = await getServerSession(authOptions);
 
-    if (!session) {
-        redirect("/api/auth/signin?callbackUrl=/add-product");
-    }
+    // if (!session) {
+    //     redirect("/api/auth/signin?callbackUrl=/add-product");
+    // }
 
     return (
         <div>

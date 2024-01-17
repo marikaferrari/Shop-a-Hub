@@ -4,9 +4,9 @@ import logo from "@/assets/logo.png";
 import { redirect } from "next/navigation";
 import { getCart } from "@/lib/db/cart";
 import ShoppinCartButton from "./ShoppingCartButton";
-import UserMenuButton from "./UserMenuButton";
-import { getServerSession } from "next-auth";
-import { authOptions } from "../api/auth/[...nextauth]/route";
+// import UserMenuButton from "./UserMenuButton";
+// import { getServerSession } from "next-auth";
+// import { authOptions } from "../api/auth/[...nextauth]/route";
 
 // Server action
 // By using server action, there is no need to reload the page = better user experience
@@ -21,7 +21,7 @@ async function searchProducts(formData: FormData) {
 }
 
 export default async function Navbar() {
-    const session = await getServerSession(authOptions);
+    // const session = await getServerSession(authOptions);
     const cart = await getCart();
 
     return (
@@ -40,7 +40,7 @@ export default async function Navbar() {
                         </div>
                     </form>
                     <ShoppinCartButton cart={cart} />
-                    <UserMenuButton session={session}/>
+                    {/* <UserMenuButton session={session}/> */}
                 </div>
             </div>
         </div>
